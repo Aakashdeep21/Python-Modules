@@ -148,3 +148,72 @@ for dirpath, _, filenames in os.walk('/var/logs'):
 
 print("Found log files:", log_files)
 ```
+
+### File Path Operations 
+<p><strong>a) Join paths</strong></p>
+<p>&nbsp;</p>
+
+```python
+os.path.join('folder', 'file.txt')
+```
+<p>If you want to create a file or directory <strong data-start="51" data-end="81">inside your HOME directory</strong>, using <code data-start="89" data-end="113">os.environ.get('HOME')</code> ensures your script is portable and dynamic across different systems. You do it using <code data-start="244" data-end="260">os.path.join()</code> to safely construct the path:</p>
+<p>&nbsp;</p>
+
+```python
+file_path = os.path.join(os.environ.get('HOME'), 'new_file.txt')
+print(file_path)
+```
+
+<p><strong>b) Check if path exists</strong></p>
+
+```python
+os.path.exists('file_or_folder')
+```
+
+<p><strong>c) <strong data-start="1397" data-end="1424">Check if path is a file</strong></strong></p>
+
+```python
+os.path.isfile('file.txt')
+```
+
+<p><strong>d) Check if path is a directory</strong></p>
+
+```python
+os.path.isdir('folder')
+```
+
+<p><strong>e) <strong data-start="1625" data-end="1639">Split path</strong></strong></p>
+
+```python
+os.path.split('/dir/file.txt')
+```
+<p>This returns both directory name and file name</p>
+
+![image](https://github.com/user-attachments/assets/76edd198-ab70-45ce-a19c-a6ea21c2fbf8)
+
+```python
+os.path.basename('/dir/file.txt)
+```
+
+<p>This returns only file name</p>
+
+![image](https://github.com/user-attachments/assets/da0e595f-92c4-4224-ad68-5c338ebda3ca)
+
+```python
+os.path.dirname('/dir/file.txt)
+```
+<p>This returns only dirctory name</p>
+
+![image](https://github.com/user-attachments/assets/0254384e-02ac-4043-9e74-48f84e65dc06)
+
+
+<p><strong>f) Get file extension</strong></p>
+
+```python
+os.path.splitext('file.txt')
+```
+
+<p>Splits root of the path and extension</p>
+
+![image](https://github.com/user-attachments/assets/56094a45-ccaf-46a2-90c2-b3ceddaf2756)
+
