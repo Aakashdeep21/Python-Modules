@@ -93,3 +93,58 @@ os.removedirs('dir1/dir2/dir3')
 ```python
 os.rename('old_name.txt', 'new_name.txt')
 ```
+
+<p><strong>j) Get File or Directory Metadata</strong></p>
+
+```python
+print(os.stat('log.txt'))
+```
+
+![image](https://github.com/user-attachments/assets/0ece371c-6992-45a6-bd1d-4c84b509d08b)
+
+<div>
+<div>to check the last modification time of a file/folder</div>
+</div>
+
+```python
+last_modify = os.stat('log.txt').st_mtime
+print(datetime.fromtimestamp(last_modify))
+```
+
+![image](https://github.com/user-attachments/assets/4a3e25f4-78d8-4567-b3cb-58317f4a774d)
+
+<p><strong>k) Directory Tree Generator</strong></p>
+
+<p>The <code data-start="51" data-end="62">os.walk()</code> function is used to <strong data-start="83" data-end="119">recursively traverse directories</strong> and their subdirectories. It yields a generator that walks through the directory tree, which is incredibly useful for file discovery, backups, data ingestion, and cleanups.</p>
+
+```python
+for dirpath, dirnames, filenames in os.walk('path'):
+    print(f"Current Path: {path} ")
+    print(f"Directories under current path : {dir_name} ")
+    print(f"Files: {file_name} ")
+```
+
+<p>Use case:</p>
+<p>ii) Print All Files in a Directory Tree</p>
+
+```python
+for dirpath, dirnames, filenames in os.walk('my_project'):
+    print(f"Directory: {dirpath}")
+    for file in filenames:
+        print(f"File: {file}")
+```
+
+<p>ii) Find All <code data-start="1540" data-end="1546">.log</code> Files in a Directory</p>
+
+```python
+import os
+
+log_files = []
+
+for dirpath, _, filenames in os.walk('/var/logs'):
+    for file in filenames:
+        if file.endswith('.log'):
+            log_files.append(os.path.join(dirpath, file))
+
+print("Found log files:", log_files)
+```
